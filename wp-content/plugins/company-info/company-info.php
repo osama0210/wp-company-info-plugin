@@ -10,3 +10,4 @@
 defined('ABSPATH') || exit;
 
 require_once __DIR__ . '/includes/admin-page.php';
+require_once __DIR__ . '/includes/shortcodes.php';
