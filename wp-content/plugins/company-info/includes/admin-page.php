@@ -6,7 +6,7 @@ class CI_Admin_Page
 {
     const GROUP = 'ci_settings_group';
     const SETTING_NAME = 'ci_company_name';
-    const SETTING_CONTACT = 'ci_contact_name';
+    const SETTING_CONTACT_NAME = 'ci_contact_name';
     const SETTING_ADDRESS = 'ci_address';
     const SETTING_PHONE = 'ci_phone';
     const SETTING_EMAIL = 'ci_email';
@@ -69,7 +69,7 @@ class CI_Admin_Page
     {
         // Whitelist the options in the database and apply sanitization callbacks for security
         register_setting(self::GROUP, self::SETTING_NAME, 'sanitize_text_field');
-        register_setting(self::GROUP, self::SETTING_CONTACT, 'sanitize_text_field');
+        register_setting(self::GROUP, self::SETTING_CONTACT_NAME, 'sanitize_text_field');
         register_setting(self::GROUP, self::SETTING_ADDRESS, 'sanitize_text_field');
         register_setting(self::GROUP, self::SETTING_PHONE, 'sanitize_text_field');
         register_setting(self::GROUP, self::SETTING_EMAIL, 'sanitize_email');
@@ -104,7 +104,7 @@ class CI_Admin_Page
      */
     function render_name_input(): void {$this->render_inputs(self::SETTING_NAME);}
 
-    function render_contact_name_input(): void {$this->render_inputs(self::SETTING_CONTACT);}
+    function render_contact_name_input(): void {$this->render_inputs(self::SETTING_CONTACT_NAME);}
 
     function render_address_input(): void {$this->render_inputs(self::SETTING_ADDRESS);}
 
