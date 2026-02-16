@@ -4,6 +4,12 @@ defined('ABSPATH') || exit;
 
 class CI_Admin_Page
 {
+    const GROUP = 'ci_settings_group';
+    const SETTING_NAME = 'ci_company_name';
+    const SETTING_CONTACT = 'ci_contact_name';
+    const SETTING_ADDRESS = 'ci_address';
+    const SETTING_PHONE = 'ci_phone';
+    const SETTING_EMAIL = 'ci_email';
 
     public function __construct()
     {
@@ -14,14 +20,14 @@ class CI_Admin_Page
     /**
      * Registers a custom admin page so administrators can manage company information.
      */
-    function ci_register_admin_menu(): void
+    public function register_admin_menu(): void
     {
         add_menu_page(
                 __('Company Information', 'company-info'), // Page title
                 __('Company Info', 'company-info'), // Menu title in the sidebar
                 'manage_options', // Only accessible by administrators
                 'company-info',
-                [$this, ], // Callback function to display the page content
+                [$this, 'render_admin_page'], // Callback function to display the page content
                 'dashicons-building',
                 60
         );
@@ -31,7 +37,7 @@ class CI_Admin_Page
      * Renders the admin settings page.
      * Includes security checks to ensure only authorized admins can access the settings.
      */
-    function ci_render_admin_page(): void
+    public function render_admin_page(): void
     {
         if (!current_user_can('manage_options')) {
             wp_die(esc_html__('No permission.', 'company-info'));
@@ -59,35 +65,35 @@ class CI_Admin_Page
     /**
      * Registers the settings in the wp_options table and defines the settings section and fields.
      */
-    function ci_register_settings(): void
+    public function register_settings(): void
     {
         // Whitelist the options in the database and apply sanitization callbacks for security
-        register_setting('ci_settings_group', 'ci_company_name', 'sanitize_text_field');
-        register_setting('ci_settings_group', 'ci_contact_name', 'sanitize_text_field');
-        register_setting('ci_settings_group', 'ci_address', 'sanitize_text_field');
-        register_setting('ci_settings_group', 'ci_phone', 'sanitize_text_field'); // Note: sanitize_text_field is safer for phone numbers than sanitize_number_field
-        register_setting('ci_settings_group', 'ci_email', 'sanitize_email');
+        register_setting(self::GROUP, self::SETTING_NAME, 'sanitize_text_field');
+        register_setting(self::GROUP, self::SETTING_CONTACT, 'sanitize_text_field');
+        register_setting(self::GROUP, self::SETTING_ADDRESS, 'sanitize_text_field');
+        register_setting(self::GROUP, self::SETTING_PHONE, 'sanitize_text_field');
+        register_setting(self::GROUP, self::SETTING_EMAIL, 'sanitize_email');
 
         // Defines a section to group the company fields together
         add_settings_section(
                 'ci_main_section',
                 __('Algemene Info', 'company-info'),
-                'ci_section_text',
+                [$this, 'render_section_text'],
                 'company-info'
         );
 
         // Maps each database option to a specific input field in the UI
-        add_settings_field('ci_name_field', __('Bedrijfsnaam', 'company-info'), 'ci_render_name_input', 'company-info', 'ci_main_section');
-        add_settings_field('ci_contact_field', __('Naam', 'company-info'), 'ci_render_contact_name_input', 'company-info', 'ci_main_section');
-        add_settings_field('ci_address_field', __('Adres', 'company-info'), 'ci_render_address_input', 'company-info', 'ci_main_section');
-        add_settings_field('ci_phone_field', __('Telefoonnummer', 'company-info'), 'ci_render_phone_input', 'company-info', 'ci_main_section');
-        add_settings_field('ci_email_field', __('Emailadres', 'company-info'), 'ci_render_email_input', 'company-info', 'ci_main_section');
+        add_settings_field('ci_name_field', __('Bedrijfsnaam', 'company-info'), [$this, 'render_name_input'], 'company-info', 'ci_main_section');
+        add_settings_field('ci_contact_field', __('Naam', 'company-info'), [$this, 'render_contact_name_input'], 'company-info', 'ci_main_section');
+        add_settings_field('ci_address_field', __('Adres', 'company-info'), [$this, 'render_address_input'], 'company-info', 'ci_main_section');
+        add_settings_field('ci_phone_field', __('Telefoonnummer', 'company-info'), [$this, 'render_phone_input'], 'company-info', 'ci_main_section');
+        add_settings_field('ci_email_field', __('Emailadres', 'company-info'), [$this, 'render_email_input'], 'company-info', 'ci_main_section');
     }
 
     /**
      * Outputs description text at the top of the settings section.
      */
-    function ci_section_text(): void
+    public function render_section_text(): void
     {
         echo '<p>' . esc_html__('Vul hieronder de gegevens in.', 'company-info') . '</p>';
     }
@@ -96,33 +102,21 @@ class CI_Admin_Page
      * Callback functions to render input fields.
      * They fetch the current value from the database using get_option to populate the fields.
      */
-    function ci_render_name_input(): void
-    {
-        $value = get_option('ci_company_name', '');
-        echo '<input type="text" name="ci_company_name" value="' . esc_attr($value) . '" class="regular-text">';
-    }
+    function render_name_input(): void {$this->render_inputs(self::SETTING_NAME);}
 
-    function ci_render_contact_name_input(): void
-    {
-        $value = get_option('ci_contact_name', '');
-        echo '<input type="text" name="ci_contact_name" value="' . esc_attr($value) . '">';
-    }
+    function render_contact_name_input(): void {$this->render_inputs(self::SETTING_CONTACT);}
 
-    function ci_render_address_input(): void
-    {
-        $value = get_option('ci_address', '');
-        echo '<textarea name="ci_address" class="regular-text" rows="3">' . esc_textarea($value) . '</textarea>';
-    }
+    function render_address_input(): void {$this->render_inputs(self::SETTING_ADDRESS);}
 
-    function ci_render_phone_input(): void
-    {
-        $value = get_option('ci_phone', '');
-        echo '<input type="text" name="ci_phone" value="' . esc_attr($value) . '">';
-    }
+    function render_phone_input(): void {$this->render_inputs(self::SETTING_PHONE);}
 
-    function ci_render_email_input(): void
+    function render_email_input(): void {$this->render_inputs(self::SETTING_EMAIL, 'email');}
+
+    private function render_inputs(string $option_name, string $input_type = 'text'): void
     {
-        $value = get_option('ci_email', '');
-        echo '<input type="email" name="ci_email" value="' . esc_attr($value) . '" class="regular-text">';
+        $value = get_option($option_name, '');
+        echo '<input type="' . esc_attr($input_type) . '" name="' . esc_attr($option_name) . '" value="' . esc_attr($value) . '" class="regular-text">';
     }
 }
+
+new CI_Admin_Page();
