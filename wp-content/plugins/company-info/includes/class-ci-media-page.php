@@ -6,7 +6,6 @@ class CI_Media_Page
     {
         add_action('admin_menu', [$this, 'add_media_subpage']);
         add_action('admin_init', [$this, 'register_gallery_settings']);
-
         add_action('admin_enqueue_scripts', [$this, 'enqueue_media_scripts']);
     }
 
@@ -24,7 +23,6 @@ class CI_Media_Page
 
     public function render_media_page(): void
     {
-
         ?>
         <div class="wrap">
             <h1><?php echo esc_html__('Bedrijfsmedia', 'company-info'); ?></h1>
@@ -32,23 +30,36 @@ class CI_Media_Page
 
             <form action="options.php" method="post">
                 <?php
+                settings_errors();
                 settings_fields('ci_gallery_group');
                 $image_ids = get_option('ci_gallery_ids', '');
                 ?>
 
                 <div class="ci-media-wrapper">
-                    <button type="button" class="button button-secondary" id="ci_media_button">
+                    <button type="button"
+                            class="button button-secondary"
+                            id="ci_media_button">
                         <?php _e('Selecteer Afbeeldingen', 'company-info'); ?>
                     </button>
 
-                    <div style="margin-top: 1rem">
-                        <label for="ci_gallery_ids">Geselecteerde IDs:</label><br>
-                        <input type="text" name="ci_gallery_ids" id="ci_gallery_ids" value="<?php echo esc_attr($image_ids); ?>" class="regular-text">
+                    <input type="hidden"
+                           name="ci_gallery_ids"
+                           id="ci_gallery_ids"
+                           value="<?php echo esc_attr($image_ids); ?>">
+
+                    <div id="ci-image-preview" style="margin-top: 1rem">
+                        <?php
+                        if (!empty($image_ids)) {
+                            $images_array = explode(',', $image_ids);
+                            foreach ($images_array as $image_array) {
+                                echo wp_get_attachment_image($image_array, 'thumbnail', false);
+                            }
+                        }
+                        ?>
                     </div>
                 </div>
-
-
                 <?php submit_button(); ?>
+
             </form>
         </div>
         <?php
@@ -65,6 +76,13 @@ class CI_Media_Page
             return;
         }
         wp_enqueue_media();
+        wp_enqueue_script(
+                'ci-media-uploader',
+                plugins_url('assets/js/media-uploader.js', dirname(__FILE__)),
+                ['jquery'],
+                '1.0.0',
+                true
+        );
     }
 }
 
