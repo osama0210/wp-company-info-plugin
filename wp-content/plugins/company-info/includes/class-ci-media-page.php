@@ -51,8 +51,8 @@ class CI_Media_Page
                         <?php
                         if (!empty($image_ids)) {
                             $images_array = explode(',', $image_ids);
-                            foreach ($images_array as $image_array) {
-                                echo wp_get_attachment_image($image_array, 'thumbnail', false);
+                            foreach ($images_array as $image) {
+                                echo wp_get_attachment_image($image, 'thumbnail', false);
                             }
                         }
                         ?>
