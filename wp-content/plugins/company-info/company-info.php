@@ -9,6 +9,8 @@
 
 defined('ABSPATH') || exit;
 
+define('CI_PLUGIN_URL', plugin_dir_url(__FILE__));
+
 require_once __DIR__ . '/includes/class-ci-admin-page.php';
 require_once __DIR__ . '/includes/class-ci-shortcodes.php';
 require_once __DIR__ . '/includes/class-ci-dashboard-widget.php';

@@ -1,11 +1,18 @@
 document.addEventListener('DOMContentLoaded', function () {
-    new Swiper('.ci-main-slider', {
+    const swiper = new Swiper('.ci-main-slider', {
         loop: true,
-        pagination: {el: '.swiper-pagination'},
+        speed: 800, // Smooth transition
+        autoplay: {
+            delay: 4000, // 4 seconds per slide
+            disableOnInteraction: false,
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
         navigation: {
             nextEl: '.swiper-button-next',
             prevEl: '.swiper-button-prev',
         },
-        autoplay: {delay: 5000},
     });
 });

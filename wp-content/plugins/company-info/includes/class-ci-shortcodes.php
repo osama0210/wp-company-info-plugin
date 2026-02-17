@@ -64,7 +64,7 @@ class CI_Shortcodes
             <div class="swiper-wrapper">
                 <?php foreach ($images_array as $image) : ?>
                     <div class="swiper-slide">
-                        <?php echo wp_get_attachment_image($image, 'large'); ?>
+                        <?php echo wp_get_attachment_image($image, 'full'); ?>
                     </div>
                 <?php endforeach; ?>
             </div>
@@ -80,8 +80,14 @@ class CI_Shortcodes
     public function enqueue_slider_assets(): void
     {
         wp_enqueue_style('swiper-css', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css');
+        wp_enqueue_style(
+                'ci_slider_style',
+                CI_PLUGIN_URL . 'assets/css/slider-style.css',
+                ['swiper-css'],
+                '1.0.0'
+        );
         wp_enqueue_script('swiper-js', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js', [], null, true);
-        wp_enqueue_script('ci-slider-init', plugins_url('assets/js/slider-init.js', dirname(__FILE__)), ['swiper-js'], '1.0.0', true);
+        wp_enqueue_script('ci-slider-init', CI_PLUGIN_URL . 'assets/js/slider-init.js', ['swiper-js'], '1.0.0', true);
     }
 
 
