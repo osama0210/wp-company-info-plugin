@@ -1,5 +1,10 @@
+/**
+ * Handle the WP Media Library integration.
+ * This script opens the media uploader, handles image selection,
+ * and updates the preview/hidden input field.
+ */
 jQuery(document).ready(function ($) {
-    let frame
+    let frame // Stores the media frame instance to prevent re-creating it
 
     $('#ci_media_button').on('click', function (e) {
         e.preventDefault();

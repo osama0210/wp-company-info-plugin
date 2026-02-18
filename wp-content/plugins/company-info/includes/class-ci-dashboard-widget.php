@@ -1,12 +1,20 @@
 <?php
-
 class CI_Dashboard_Widget
 {
+
+    /**
+     * Initializes the class and registers WP hooks.
+     * This run automatically when the class is instantiated.
+     */
     public function __construct()
     {
         add_action('wp_dashboard_setup', [$this, 'add_dashboard_widget']);
     }
 
+    /**
+     * Registers a custom widget.
+     * Uses render_dashboard_widget to define the id, title etc...
+     */
     public function add_dashboard_widget(): void
     {
         wp_add_dashboard_widget(
@@ -16,6 +24,10 @@ class CI_Dashboard_Widget
         );
     }
 
+    /**
+     * Renders the HTML content for the dashboard widget.
+     * Fetches company data from the options table and esc output for security.
+     */
     public function render_dashboard_widget(): void
     {
         ?>

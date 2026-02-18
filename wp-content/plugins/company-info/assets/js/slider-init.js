@@ -1,3 +1,6 @@
+/**
+ * Initialize the Swiper.js slider for the frontend.
+ */
 document.addEventListener('DOMContentLoaded', function () {
     const swiper = new Swiper('.ci-main-slider', {
         loop: true,
