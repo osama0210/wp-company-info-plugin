@@ -3,9 +3,9 @@ msgstr ""
 "Project-Id-Version: Company Info\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-02-18 07:16+0000\n"
-"PO-Revision-Date: 2026-02-18 07:30+0000\n"
+"PO-Revision-Date: 2026-02-18 09:28+0000\n"
 "Last-Translator: \n"
-"Language-Team: Dutch\n"
+"Language-Team: Nederlands\n"
 "Language: nl_NL\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "MIME-Version: 1.0\n"
@@ -66,7 +66,7 @@ msgstr "Media"
 #: includes/class-ci-dashboard-widget.php:28
 #: includes/class-ci-admin-page.php:87
 msgid "Name"
-msgstr "Media"
+msgstr "Naam"
 
 #: includes/class-ci-shortcodes.php:54
 msgid "No images selected for the slider."
