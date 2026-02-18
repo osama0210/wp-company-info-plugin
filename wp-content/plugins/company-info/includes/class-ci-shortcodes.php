@@ -12,7 +12,6 @@ class CI_Shortcodes
         add_shortcode('ci_gallery', [$this, 'render_media']);
         add_shortcode('ci_slider', [$this, 'render_media_slider']);
         add_action('wp_enqueue_scripts', [$this, 'enqueue_slider_assets']);
-
     }
 
     public function render_name(): string {return $this->get_option_name(CI_Admin_Page::SETTING_NAME);}
@@ -45,7 +44,6 @@ class CI_Shortcodes
         return ob_get_clean();
     }
 
-
     public function render_media_slider(): string
     {
         $this->enqueue_slider_assets();
@@ -53,7 +51,7 @@ class CI_Shortcodes
         $image_ids = $this->get_option_name('ci_gallery_ids');
 
         if (empty($image_ids)) {
-            return '<p>No images selected for the slider.</p>';
+            return '<p>' . __('No images selected for the slider.', 'company-info') . '</p>';
         }
 
         $images_array = explode(',', $image_ids);

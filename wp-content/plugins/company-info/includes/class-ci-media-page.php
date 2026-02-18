@@ -13,7 +13,7 @@ class CI_Media_Page
     {
         add_submenu_page(
             'company-info',
-            __('Bedrijfsmedia', 'company-info'),
+                __('Company media', 'company-info'),
             __('Media', 'company-info'),
             'manage_options',
             'ci-media',
@@ -25,8 +25,8 @@ class CI_Media_Page
     {
         ?>
         <div class="wrap">
-            <h1><?php echo esc_html__('Bedrijfsmedia', 'company-info'); ?></h1>
-            <p><?php echo esc_html__('Upload en beheer afbeeldingen voor je slider.', 'company-info'); ?></p>
+            <h1><?php esc_html_e('Company media', 'company-info'); ?></h1>
+            <p><?php esc_html_e('Upload and manage images for your slider.', 'company-info'); ?></p>
 
             <form action="options.php" method="post">
                 <?php
@@ -39,7 +39,7 @@ class CI_Media_Page
                     <button type="button"
                             class="button button-secondary"
                             id="ci_media_button">
-                        <?php _e('Selecteer Afbeeldingen', 'company-info'); ?>
+                        <?php _e('Select Images', 'company-info'); ?>
                     </button>
 
                     <input type="hidden"
@@ -72,7 +72,7 @@ class CI_Media_Page
 
     public function enqueue_media_scripts($hook): void
     {
-        if ($hook !== 'company-info_page_ci-media') {
+        if (strpos($hook, 'ci-media') === false) {
             return;
         }
         wp_enqueue_media();

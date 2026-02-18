@@ -50,7 +50,7 @@ class CI_Admin_Page
             <form method="post" action="options.php">
                 <?php
                 // Generates security nonces and hidden fields to prevent CSRF attacks
-                settings_fields('ci_settings_group');
+                settings_fields(self::GROUP);
 
                 // Renders the registered sections and fields for this page
                 do_settings_sections('company-info');
@@ -77,17 +77,17 @@ class CI_Admin_Page
         // Defines a section to group the company fields together
         add_settings_section(
                 'ci_main_section',
-                __('Algemene Info', 'company-info'),
+                __('General info', 'company-info'),
                 [$this, 'render_section_text'],
                 'company-info'
         );
 
         // Maps each database option to a specific input field in the UI
-        add_settings_field('ci_name_field', __('Bedrijfsnaam', 'company-info'), [$this, 'render_name_input'], 'company-info', 'ci_main_section');
-        add_settings_field('ci_contact_field', __('Naam', 'company-info'), [$this, 'render_contact_name_input'], 'company-info', 'ci_main_section');
-        add_settings_field('ci_address_field', __('Adres', 'company-info'), [$this, 'render_address_input'], 'company-info', 'ci_main_section');
-        add_settings_field('ci_phone_field', __('Telefoonnummer', 'company-info'), [$this, 'render_phone_input'], 'company-info', 'ci_main_section');
-        add_settings_field('ci_email_field', __('Emailadres', 'company-info'), [$this, 'render_email_input'], 'company-info', 'ci_main_section');
+        add_settings_field('ci_name_field', __('Company name', 'company-info'), [$this, 'render_name_input'], 'company-info', 'ci_main_section');
+        add_settings_field('ci_contact_field', __('Name', 'company-info'), [$this, 'render_contact_name_input'], 'company-info', 'ci_main_section');
+        add_settings_field('ci_address_field', __('Address', 'company-info'), [$this, 'render_address_input'], 'company-info', 'ci_main_section');
+        add_settings_field('ci_phone_field', __('Phone number', 'company-info'), [$this, 'render_phone_input'], 'company-info', 'ci_main_section');
+        add_settings_field('ci_email_field', __('Email address', 'company-info'), [$this, 'render_email_input'], 'company-info', 'ci_main_section');
     }
 
     /**
@@ -95,7 +95,7 @@ class CI_Admin_Page
      */
     public function render_section_text(): void
     {
-        echo '<p>' . esc_html__('Vul hieronder de gegevens in.', 'company-info') . '</p>';
+        echo '<p>' . esc_html__('Please fill in the following details.', 'company-info') . '</p>';
     }
 
     /**
@@ -115,7 +115,11 @@ class CI_Admin_Page
     private function render_inputs(string $option_name, string $input_type = 'text'): void
     {
         $value = get_option($option_name, '');
-        echo '<input type="' . esc_attr($input_type) . '" name="' . esc_attr($option_name) . '" value="' . esc_attr($value) . '" class="regular-text">';
+        echo '<input type="' . esc_attr($input_type) . '" 
+        id="' . esc_attr($option_name) . '"
+        name="' . esc_attr($option_name) . '" 
+        value="' . esc_attr($value) . '" 
+        class="regular-text">';
     }
 }
 

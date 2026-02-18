@@ -15,3 +15,7 @@ require_once __DIR__ . '/includes/class-ci-admin-page.php';
 require_once __DIR__ . '/includes/class-ci-shortcodes.php';
 require_once __DIR__ . '/includes/class-ci-dashboard-widget.php';
 require_once __DIR__ . '/includes/class-ci-media-page.php';
+
+add_action('init', function() {
+    load_plugin_textdomain('company-info', false, dirname(plugin_basename(__FILE__)) . '/languages');
+});

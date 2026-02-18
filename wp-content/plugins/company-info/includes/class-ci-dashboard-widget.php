@@ -20,11 +20,26 @@ class CI_Dashboard_Widget
     {
         ?>
         <ul>
-            <li><strong>Bedrijfsnaam :</strong> <?php echo esc_html(get_option(CI_Admin_Page::SETTING_NAME)) ?></li>
-            <li><strong>Naam:</strong> <?php echo esc_html(get_option(CI_Admin_Page::SETTING_CONTACT_NAME)) ?></li>
-            <li><strong>Adres:</strong> <?php echo esc_html(get_option(CI_Admin_Page::SETTING_ADDRESS)) ?></li>
-            <li><strong>Telefoonnummer:</strong> <?php echo esc_html(get_option(CI_Admin_Page::SETTING_PHONE)) ?></li>
-            <li><strong>Emailadres:</strong> <?php echo esc_html(get_option(CI_Admin_Page::SETTING_EMAIL)) ?></li>
+            <li>
+                <strong><?php _e('Company Name', 'company-info'); ?>:</strong>
+                <?php echo esc_html(get_option(CI_Admin_Page::SETTING_NAME, '')); ?>
+            </li>
+            <li>
+                <strong><?php _e('Name', 'company-info'); ?>:</strong>
+                <?php echo esc_html(get_option(CI_Admin_Page::SETTING_CONTACT_NAME, '')); ?>
+            </li>
+            <li>
+                <strong><?php _e('Address', 'company-info'); ?>:</strong>
+                <?php echo esc_html(get_option(CI_Admin_Page::SETTING_ADDRESS, '')); ?>
+            </li>
+            <li>
+                <strong><?php _e('Phone Number', 'company-info'); ?>:</strong>
+                <?php echo esc_html(get_option(CI_Admin_Page::SETTING_PHONE, '')); ?>
+            </li>
+            <li>
+                <strong><?php _e('Email Address', 'company-info'); ?>:</strong>
+                <?php echo esc_html(get_option(CI_Admin_Page::SETTING_EMAIL, '')); ?>
+            </li>
         </ul>
         <?php
     }

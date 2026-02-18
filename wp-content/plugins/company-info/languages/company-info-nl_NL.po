@@ -1,0 +1,101 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Company Info\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-02-18 07:16+0000\n"
+"PO-Revision-Date: 2026-02-18 07:30+0000\n"
+"Last-Translator: \n"
+"Language-Team: Dutch\n"
+"Language: nl_NL\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.8.1; wp-6.9.1; php-8.2.30\n"
+"X-Domain: company-info"
+
+#: includes/class-ci-dashboard-widget.php:32
+#: includes/class-ci-admin-page.php:88
+msgid "Address"
+msgstr "Adres"
+
+#. Description of the plugin
+msgid "Adds basic company information to WordPress."
+msgstr "Voegt basisbedrijfsinformatie toe aan WordPress."
+
+#. Page title
+#. Name of the plugin
+#: includes/class-ci-admin-page.php:27 includes/class-ci-admin-page.php:48
+msgid "Company Info"
+msgstr "Bedrijfsinfo"
+
+#: includes/class-ci-dashboard-widget.php:14
+#: includes/class-ci-admin-page.php:26
+msgid "Company Information"
+msgstr "Bedrijfsinformatie"
+
+#: includes/class-ci-media-page.php:16 includes/class-ci-media-page.php:28
+msgid "Company media"
+msgstr "Bedrijfsmedia"
+
+#: includes/class-ci-dashboard-widget.php:24
+msgid "Company Name"
+msgstr "Bedrijfsnaam"
+
+#: includes/class-ci-admin-page.php:86
+msgid "Company name"
+msgstr "Bedrijfsnaam"
+
+#: includes/class-ci-dashboard-widget.php:40
+msgid "Email Address"
+msgstr "E-mailadres"
+
+#: includes/class-ci-admin-page.php:90
+msgid "Email address"
+msgstr "E-mailadres"
+
+#: includes/class-ci-admin-page.php:80
+msgid "General info"
+msgstr "Algemene info"
+
+#: includes/class-ci-media-page.php:17
+msgid "Media"
+msgstr "Media"
+
+#: includes/class-ci-dashboard-widget.php:28
+#: includes/class-ci-admin-page.php:87
+msgid "Name"
+msgstr "Media"
+
+#: includes/class-ci-shortcodes.php:54
+msgid "No images selected for the slider."
+msgstr "Er zijn geen afbeeldingen geselecteerd voor de slider."
+
+#: includes/class-ci-admin-page.php:43
+msgid "No permission."
+msgstr "Geen toestemming."
+
+#. Author of the plugin
+msgid "Osama Alasmi"
+msgstr "Osama Alasmi"
+
+#: includes/class-ci-dashboard-widget.php:36
+msgid "Phone Number"
+msgstr "Telefoonnummer"
+
+#: includes/class-ci-admin-page.php:89
+msgid "Phone number"
+msgstr "Telefoonnummer"
+
+#: includes/class-ci-admin-page.php:98
+msgid "Please fill in the following details."
+msgstr "Vul de volgende gegevens in."
+
+#: includes/class-ci-media-page.php:42
+msgid "Select Images"
+msgstr "Selecteer afbeeldingen"
+
+#: includes/class-ci-media-page.php:29
+msgid "Upload and manage images for your slider."
+msgstr "Upload en beheer afbeeldingen voor je slider."
