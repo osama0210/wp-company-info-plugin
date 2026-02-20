@@ -4,10 +4,10 @@ class Team_Post_Type
 {
     public function __construct()
     {
-        add_action('init', [$this, 'ct_cpt_register']);
+        add_action('init', [$this, 'cpt_register']);
     }
 
-    public function ct_cpt_register()
+    public function cpt_register()
     {
         register_post_type('team', array(
                 'labels' => array(
