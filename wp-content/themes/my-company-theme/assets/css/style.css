@@ -1,0 +1,39 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    background-color: #333;
+    padding: 1rem 2rem;
+    margin-bottom: 1rem;
+}
+
+header nav ul {
+    display: flex;
+    list-style: none;
+    gap: 1rem;
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+footer {
+    background-color: #9a7676;
+    padding: 1rem 2rem;
+    margin-top: auto;
+}
+
+.menu-footer-container ul {
+    display: flex;
+    list-style: none;
+    gap: 1rem;
+}
+
+.menu-footer-container nav ul li a {
+    color: white;
+    text-decoration: none;
+}
