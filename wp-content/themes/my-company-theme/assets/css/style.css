@@ -37,3 +37,17 @@ footer {
     color: white;
     text-decoration: none;
 }
+
+.swiper {
+    width: 50%;
+    margin: 2rem auto;
+}
+
+.swiper-slide {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    background: #f5f5f5;
+    padding: 2rem;
+    height: 300px;
+}
