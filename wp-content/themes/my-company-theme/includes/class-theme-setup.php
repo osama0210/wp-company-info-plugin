@@ -9,6 +9,7 @@ class Theme_Setup
     public function __construct()
     {
         add_action('after_setup_theme', [$this, 'setup']);
+        add_filter('wp_is_application_passwords_available', '__return_true');
         add_action('wp_enqueue_scripts', [$this, 'enqueue_assets']);
         add_action('wp_enqueue_scripts', [$this, 'enqueue_slider_assets']);
 

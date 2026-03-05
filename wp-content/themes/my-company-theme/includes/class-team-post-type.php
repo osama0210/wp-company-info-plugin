@@ -17,11 +17,31 @@ class Team_Post_Type
                     'name' => __('Team Members', 'my-company-theme'),
                     'singular_name' => __('Team Member', 'my-company-theme'),
                 ),
+                'show_in_rest' => true,
+                'rest_controller_class' => 'WP_REST_Posts_Controller',
                 'public' => true,
                 'has_archive' => true,
                 'supports' => array('title', 'thumbnail'),
                 'menu_icon' => 'dashicons-groups',
             )
+
         );
+        register_post_meta('team', '_team_function', [
+            'show_in_rest' => true,
+            'single' => true,
+            'type' => 'string',
+        ]);
+
+        register_post_meta('team', '_team_email', [
+            'show_in_rest' => true,
+            'single' => true,
+            'type' => 'string',
+        ]);
+
+        register_post_meta('team', '_team_linkedin', [
+            'show_in_rest' => true,
+            'single' => true,
+            'type' => 'string',
+        ]);
     }
 }
