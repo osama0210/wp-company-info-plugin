@@ -24,21 +24,21 @@ class Team_Meta
 
     public function render_meta_box($post)
     {
-        $function = get_post_meta($post->ID, '_team_function', true);
-        $email = get_post_meta($post->ID, '_team_email', true);
-        $linkedin = get_post_meta($post->ID, '_team_linkedin', true);
+        $function = get_post_meta($post->ID, 'team_function', true);
+        $email = get_post_meta($post->ID, 'team_email', true);
+        $linkedin = get_post_meta($post->ID, 'team_linkedin', true);
 
         wp_nonce_field('team_meta_box', 'team_meta_box_nonce');
 
         ?>
         <label><?php _e('Function', 'my-company-theme'); ?></label>
-        <input type="text" name="_team_function" value="<?php echo esc_attr($function); ?>">
+        <input type="text" name="team_function" value="<?php echo esc_attr($function); ?>">
 
         <label><?php _e('Email', 'my-company-theme'); ?></label>
-        <input type="email" name="_team_email" value="<?php echo esc_attr($email); ?>">
+        <input type="email" name="team_email" value="<?php echo esc_attr($email); ?>">
 
         <label><?php _e('LinkedIn', 'my-company-theme'); ?></label>
-        <input type="url" name="_team_linkedin" value="<?php echo esc_attr($linkedin); ?>">
+        <input type="url" name="team_linkedin" value="<?php echo esc_attr($linkedin); ?>">
         <?php
     }
 
@@ -52,16 +52,16 @@ class Team_Meta
             return;
         }
 
-        if (isset($_POST['_team_function'])) {
-            update_post_meta($post_id, '_team_function', sanitize_text_field($_POST['_team_function']));
+        if (isset($_POST['team_function'])) {
+            update_post_meta($post_id, 'team_function', sanitize_text_field($_POST['team_function']));
         }
 
-        if (isset($_POST['_team_email'])) {
-            update_post_meta($post_id, '_team_email', sanitize_email($_POST['_team_email']));
+        if (isset($_POST['team_email'])) {
+            update_post_meta($post_id, 'team_email', sanitize_email($_POST['team_email']));
         }
 
-        if (isset($_POST['_team_linkedin'])) {
-            update_post_meta($post_id, '_team_linkedin', esc_url_raw($_POST['_team_linkedin']));
+        if (isset($_POST['team_linkedin'])) {
+            update_post_meta($post_id, 'team_linkedin', esc_url_raw($_POST['team_linkedin']));
         }
 
     }

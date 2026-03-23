@@ -44,5 +44,13 @@ class Theme_Setup
             wp_enqueue_script('swiper');
             wp_enqueue_script('my-theme-slider');
         }
+
+        if (is_page('team-manager')) {
+            wp_enqueue_script('team-manager', get_template_directory_uri() . '/assets/js/team-manager.js', [], '1.0', true);
+            wp_localize_script('team-manager', 'wpApiSettings', [
+                'nonce' => wp_create_nonce('wp_rest'),
+                'url' => rest_url('wp/v2/team'),
+            ]);
+        }
     }
 }

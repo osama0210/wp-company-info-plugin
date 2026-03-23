@@ -7,9 +7,9 @@ form.addEventListener('submit', function (e) {
         title: document.getElementById('team-title').value,
         status: 'publish',
         meta: {
-            _team_function: document.getElementById('team-function').value,
-            _team_email: document.getElementById('team-email').value,
-            _team_linkedin: document.getElementById('team-linkedin').value,
+            team_function: document.getElementById('team-function').value,
+            team_email: document.getElementById('team-email').value,
+            team_linkedin: document.getElementById('team-linkedin').value,
         }
     }
     console.log(data)

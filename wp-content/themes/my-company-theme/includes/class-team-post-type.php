@@ -21,27 +21,32 @@ class Team_Post_Type
                 'rest_controller_class' => 'WP_REST_Posts_Controller',
                 'public' => true,
                 'has_archive' => true,
-                'supports' => array('title', 'thumbnail'),
+                'supports' => array('title', 'thumbnail', 'custom-fields'),
                 'menu_icon' => 'dashicons-groups',
             )
 
         );
-        register_post_meta('team', '_team_function', [
+        register_post_meta('team', 'team_function', [
             'show_in_rest' => true,
             'single' => true,
             'type' => 'string',
+            'auth_callback' => '__return_true',
+
         ]);
 
-        register_post_meta('team', '_team_email', [
+        register_post_meta('team', 'team_email', [
             'show_in_rest' => true,
             'single' => true,
             'type' => 'string',
+            'auth_callback' => '__return_true',
+
         ]);
 
-        register_post_meta('team', '_team_linkedin', [
+        register_post_meta('team', 'team_linkedin', [
             'show_in_rest' => true,
             'single' => true,
             'type' => 'string',
+            'auth_callback' => '__return_true',
         ]);
     }
 }
